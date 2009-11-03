@@ -1,11 +1,12 @@
 package org.fg30.bones
 
 
-import Math._
-import java.awt.Color._
-import java.awt.Graphics
-import swing._
-import event.ButtonClicked
+import _root_.scala.Math._
+import _root_.java.awt.Color._
+import _root_.scala.swing._
+import _root_.scala.swing.event.ButtonClicked
+import _root_.java.awt.Graphics
+
 /**
  * Created by IntelliJ IDEA.
  * User: joakim

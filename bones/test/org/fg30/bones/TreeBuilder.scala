@@ -10,7 +10,7 @@ import Math._
 
 object TreeBuilder {
 	val LARGE = List(80, 60, 50, 45, 40, 30, 20, 15, 10)
-	val SMALL = List(120, 100, 80, 40)
+	val SMALL = List(160, 130, 100, 60)
 
 	private val spread = Pi / 6
 

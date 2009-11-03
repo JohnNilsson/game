@@ -1,9 +1,9 @@
 package org.fg30.bones
 
 
-import scalatest.junit.AssertionsForJUnit
-import org.junit.Test
-import Math._
+import _root_.org.scalatest.junit.AssertionsForJUnit
+import _root_.org.junit.Test
+import _root_.scala.Math._
 
 /**
  * Created by IntelliJ IDEA.
