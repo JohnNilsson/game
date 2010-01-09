@@ -244,9 +244,9 @@ class EdgeEditor {
       case ButtonClicked(`renderButton`) => {
         future {
           renderResult
-        }
 
-        editor.repaint
+          editor.repaint
+        }
       }
     }
   }
