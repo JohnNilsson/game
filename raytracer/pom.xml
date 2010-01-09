@@ -24,6 +24,12 @@
       <version>${scala.version}</version>
       <optional>false</optional>
     </dependency>
+      <dependency>
+      <groupId>org.scala-lang</groupId>
+      <artifactId>scala-swing</artifactId>
+      <version>${scala.version}</version>
+      <optional>false</optional>
+    </dependency>
     <dependency>
       <groupId>org.fg30.game</groupId>
       <artifactId>misc</artifactId>
