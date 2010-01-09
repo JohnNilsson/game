@@ -202,17 +202,17 @@ object Edge {
   }
 }
 
-class Progress(complete: Int) {
+class Progress(complete: Int, trigger: Double => Unit) {
   var count: Int = 0
-  var oldProgress: Int = 0
+  var oldProgress: Double = 0
   
   def update() {
     count += 1
     
-    val newProgress = (count * 100.0 / complete).toInt
+    val newProgress = count.toDouble / complete
     
-    if (newProgress > oldProgress + 5) {
-      println(newProgress + "%")
+    if (newProgress > (oldProgress + 0.05)) {
+      trigger(newProgress)
 
       oldProgress = newProgress
     }
@@ -222,12 +222,12 @@ class Progress(complete: Int) {
 class Render(x1: Int, y1: Int, x2: Int, y2: Int, resolution: Int, maxLength: Int, maxReflections: Int, iterations: Int) {
   val random = new Random
 
-  def raytrace(edges: Seq[Edge]) = {
+  def raytrace(edges: Seq[Edge], trigger: Double => Unit) = {
     val t = new Timer
     val sx = (x2 - x1) / resolution
     val sy = (y2 - y1) / resolution
     val result = new BufferedImage(sx, sy, BufferedImage.TYPE_INT_RGB)
-    val progress = new Progress(sx * sy)
+    val progress = new Progress(sx * sy, trigger)
 
     for {
       ix <- 0 until sx

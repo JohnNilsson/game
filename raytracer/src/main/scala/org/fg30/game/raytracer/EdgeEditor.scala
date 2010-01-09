@@ -6,6 +6,7 @@ import _root_.scala.swing.event._
 import _root_.scala.swing._
 import _root_.javax.swing.{JColorChooser}
 import _root_.java.awt.{Point => AWTPoint, Dimension, Graphics2D, BasicStroke, Image}
+import _root_.scala.actors.Futures.future
 
 /**
  * Created by IntelliJ IDEA.
@@ -113,6 +114,7 @@ class EdgeEditor {
   val renderButton = new Button("Render")
   val picker = new ColorPicker(this)
   val toolPanel = new ToolPanel(this)
+  val progress = new ProgressBar()
   var selected: Option[Edge] = None
   var drag: Option[Edge] = None
   
@@ -152,7 +154,14 @@ class EdgeEditor {
   }
 
   def renderResult = {
-    result = Some(render.raytrace(edges))
+    progress.value = 0
+
+    result = Some(render.raytrace(edges,
+      (d: Double) => {
+        progress.value = (d * 100).toInt
+      }))
+
+    progress.value = 100
   }
 
   def top = new MainFrame {
@@ -160,10 +169,12 @@ class EdgeEditor {
     contents = new BoxPanel(Orientation.Vertical) {
       contents += editor
       contents += toolPanel
+      contents += progress
     }
     
     pack
     visible = true
+    progress.max = 100
 
     listenTo(editor.mouse.clicks)
     listenTo(editor.mouse.moves)
@@ -231,7 +242,9 @@ class EdgeEditor {
         editor.repaint
       }
       case ButtonClicked(`renderButton`) => {
-        renderResult
+        future {
+          renderResult
+        }
 
         editor.repaint
       }

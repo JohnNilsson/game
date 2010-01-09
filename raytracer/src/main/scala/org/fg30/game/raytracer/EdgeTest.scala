@@ -38,7 +38,7 @@ class EdgeView(parent: EdgeTest) extends Component {
     }
 
     def drawLightmap(g: Graphics2D) = {
-      val image = parent.render.raytrace(parent.edges)
+      val image = parent.render.raytrace(parent.edges, (d: Double) => { println(d * 100 + " %")})
       val tx = new AffineTransform();
       tx.scale(parent.resolution, parent.resolution);
       g.drawImage(image, tx, null)
