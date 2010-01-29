@@ -45,7 +45,7 @@ case class Vector2D(x: Double, y: Double) {
     x * other.x + y * other.y
   }
 
-  def reflect(other: Vector2D) = {
+  def reflectOn(other: Vector2D) = {
     val n = other.normal.normalized
 
     this - n * 2 * (n dot this)

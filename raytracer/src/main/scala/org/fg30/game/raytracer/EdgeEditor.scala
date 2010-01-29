@@ -123,7 +123,7 @@ class EdgeEditor {
   var nearest: Option[Point] = None
   var result: Option[Image] = None
 
-  val resolution = 5
+  val resolution = 20
   val maxLength = 1000
   val maxReflections = 5
   val samples = 500

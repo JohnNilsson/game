@@ -60,7 +60,7 @@ class Ray(val point: Point, val angle: Double) {
   }
 
   def reflect(edge: Edge) = {
-    new Ray(intersectionPoint(edge).getOrElse(edge.midpoint), vector.reflect(edge.vector).angle + Ray.diffuse)
+    new Ray(intersectionPoint(edge).getOrElse(edge.midpoint), vector.reflectOn(edge.vector).angle + Ray.diffuse)
   }
 
   def toEdge = {

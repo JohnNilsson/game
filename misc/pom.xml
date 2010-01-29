@@ -2,28 +2,35 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <packaging>jar</packaging>
-  <name>Utility Package</name>
+    <packaging>jar</packaging>
+    <name>Utility Package</name>
 
-  <groupId>org.fg30.game</groupId>
-  <artifactId>misc</artifactId>
-  <version>${parent.version}</version>
-
-  <parent>
     <groupId>org.fg30.game</groupId>
-    <artifactId>root</artifactId>
-    <version>1.0-SNAPSHOT</version>
-  </parent>
+    <artifactId>misc</artifactId>
+    <version>${parent.version}</version>
 
-  <dependencies>
-    <dependency>
-      <groupId>org.scala-lang</groupId>
-      <artifactId>scala-library</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
+    <parent>
+        <groupId>org.fg30.game</groupId>
+        <artifactId>root</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+        </dependency>
+        <!--
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        -->
+        <dependency>
+            <groupId>org.scalatest</groupId>
+            <artifactId>scalatest</artifactId>
+            <version>1.0.1-for-scala-2.8.0.Beta1-RC8-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 </project>

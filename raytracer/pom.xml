@@ -25,7 +25,7 @@
       <groupId>org.scala-lang</groupId>
       <artifactId>scala-library</artifactId>
     </dependency>
-      <dependency>
+    <dependency>
       <groupId>org.scala-lang</groupId>
       <artifactId>scala-swing</artifactId>
     </dependency>

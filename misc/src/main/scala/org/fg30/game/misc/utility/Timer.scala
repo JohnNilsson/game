@@ -27,18 +27,3 @@ class Timer {
 object Timer {
   def now = System.nanoTime / 1000000
 }
-
-object FastMath {
-  def sqrt(x: Double) = {
-    if (x == 0) {
-      0
-    }
-
-    var root = x / 2
-    for (k <- 0 until 5) {
-      root = (root + (x / root)) / 2;
-    }
-
-    root
-  }
-}
