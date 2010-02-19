@@ -28,23 +28,26 @@ class TileComponent(parent: VisualTest) extends Component {
 
   def initTiles = {
     def addMapping(i: Int, image: BufferedImage) = {
-      tiles.put(Tile(SouthEast(), i), image.getSubimage(0, 0, 64, 64))
-      tiles.put(Tile(South(), i), image.getSubimage(64, 0, 64, 64))
-      tiles.put(Tile(SouthWest(), i), image.getSubimage(128, 0, 64, 64))
-      tiles.put(Tile(East(), i), image.getSubimage(0, 64, 64, 64))
-      tiles.put(Tile(Full(), i), image.getSubimage(64, 64, 64, 64))
-      tiles.put(Tile(West(), i), image.getSubimage(128, 64, 64, 64))
-      tiles.put(Tile(NorthEast(), i), image.getSubimage(0, 128, 64, 64))
-      tiles.put(Tile(North(), i), image.getSubimage(64, 128, 64, 64))
-      tiles.put(Tile(NorthWest(), i), image.getSubimage(128, 128, 64, 64))
-      tiles.put(Tile(InvSouthEast(), i), image.getSubimage(192, 0, 64, 64))
-      tiles.put(Tile(InvSouthWest(), i), image.getSubimage(256, 0, 64, 64))
-      tiles.put(Tile(InvNorthEast(), i), image.getSubimage(192, 64, 64, 64))
-      tiles.put(Tile(InvNorthWest(), i), image.getSubimage(256, 64, 64, 64))
+      //val s = List(0, 64, 128, 192, 256)
+      val s = List(0, 128, 256, 384, 512)
+
+      tiles.put(Tile(SouthEast(), i), image.getSubimage(0, 0, s(1), s(1)))
+      tiles.put(Tile(South(), i), image.getSubimage(s(1), 0, s(1), s(1)))
+      tiles.put(Tile(SouthWest(), i), image.getSubimage(s(2), 0, s(1), s(1)))
+      tiles.put(Tile(East(), i), image.getSubimage(0, s(1), s(1), s(1)))
+      tiles.put(Tile(Full(), i), image.getSubimage(s(1), s(1), s(1), s(1)))
+      tiles.put(Tile(West(), i), image.getSubimage(s(2), s(1), s(1), s(1)))
+      tiles.put(Tile(NorthEast(), i), image.getSubimage(0, s(2), s(1), s(1)))
+      tiles.put(Tile(North(), i), image.getSubimage(s(1), s(2), s(1), s(1)))
+      tiles.put(Tile(NorthWest(), i), image.getSubimage(s(2), s(2), s(1), s(1)))
+      tiles.put(Tile(InvSouthEast(), i), image.getSubimage(s(3), 0, s(1), s(1)))
+      tiles.put(Tile(InvSouthWest(), i), image.getSubimage(s(4), 0, s(1), s(1)))
+      tiles.put(Tile(InvNorthEast(), i), image.getSubimage(s(3), s(1), s(1), s(1)))
+      tiles.put(Tile(InvNorthWest(), i), image.getSubimage(s(4), s(1), s(1), s(1)))
     }
 
-    addMapping(1, ImageIO.read(Thread.currentThread.getContextClassLoader.getResourceAsStream("images/tiles1.png")))
-    addMapping(2, ImageIO.read(Thread.currentThread.getContextClassLoader.getResourceAsStream("images/tiles2.png")))
+    addMapping(1, ImageIO.read(Thread.currentThread.getContextClassLoader.getResourceAsStream("images/earth.png")))
+    addMapping(2, ImageIO.read(Thread.currentThread.getContextClassLoader.getResourceAsStream("images/hexagonal_tiles.png")))
   }
 
   override def paintComponent(g: Graphics2D) = {
@@ -62,8 +65,8 @@ class TileComponent(parent: VisualTest) extends Component {
         tiles.get(t).foreach(g.drawImage(_, ix * ts, iy * ts, null))
       })
 
-      g.setColor(gridColor)
-      g.drawRect(ix * ts, iy * ts, ts, ts)
+      // g.setColor(gridColor)
+      // g.drawRect(ix * ts, iy * ts, ts, ts)
     }
   }
 
@@ -89,7 +92,7 @@ class VisualTest {
     Grid[Int](mapSize, (x: Int, y: Int) => { result.get(x, y).getOrElse(0)})
   }
 
-  val tileSize = 64
+  val tileSize = 128
   val mapSize = 10
 
   val random = new Random

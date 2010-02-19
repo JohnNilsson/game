@@ -3,7 +3,7 @@ package org.fg30.game.misc.vector
 import _root_.org.scalatest.matchers.ShouldMatchers
 import _root_.org.scalatest.FlatSpec
 import _root_.org.fg30.misc.vector.Vector2D
-import _root_.scala.Math.{sqrt, sin, cos, toRadians}
+import _root_.scala.Math.{sqrt, sin, cos, toRadians, Pi}
 
 class Vector2DSpec extends FlatSpec with ShouldMatchers {
   "A Vector" should "be able to be multiplied by an integer" in {
@@ -51,5 +51,11 @@ class Vector2DSpec extends FlatSpec with ShouldMatchers {
     val r = new Vector2D(1, 0).reflectOn(Vector2D(1, 1))
     r.x should be (0.0 plusOrMinus 0.01)
     r.y should be (1.0 plusOrMinus 0.01)
+  }
+
+  it should "be able to rotate" in {
+    val v = new Vector2D(1, 0)
+
+    v.rotate(Pi / 2) should equal (Vector2D(0, 1))
   }
 }

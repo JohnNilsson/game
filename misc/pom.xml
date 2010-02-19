@@ -28,6 +28,10 @@
         </dependency>
         -->
         <dependency>
+          <groupId>org.scala-lang</groupId>
+          <artifactId>scala-swing</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.scalatest</groupId>
             <artifactId>scalatest</artifactId>
             <version>1.0.1-for-scala-2.8.0.Beta1-RC8-SNAPSHOT</version>

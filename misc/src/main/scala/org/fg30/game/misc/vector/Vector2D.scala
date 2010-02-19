@@ -1,5 +1,7 @@
 package org.fg30.misc.vector
 
+import _root_.scala.Math.{sin, cos}
+
 /**
  * Created by IntelliJ IDEA.
  * User: joakim
@@ -49,5 +51,9 @@ case class Vector2D(x: Double, y: Double) {
     val n = other.normal.normalized
 
     this - n * 2 * (n dot this)
+  }
+
+  def rotate(a: Double) = {
+    new Vector2D(cos(angle + a) * length, sin(angle + a) * length)
   }
 }
